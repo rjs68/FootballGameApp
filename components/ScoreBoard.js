@@ -18,13 +18,27 @@ export class ScoreBoard extends React.Component {
     render() {
         return <View style={{flex: 1, flexDirection: 'column'}}>
             <View style={{flex:1, flexDirection: 'row'}}>
-                <Text>{this.state.team1Name}</Text>
-                <Text>{this.state.team1Score}</Text>
+                <View style={{width: '87%'}}>
+                    <Text style={teamNameStyle}>{this.state.team1Name}</Text>
+                </View>
+                <Text style={scoreStyle}>{this.state.team1Score}</Text>
             </View>
             <View style={{flex:1, flexDirection: 'row'}}>
-                <Text>{this.state.team2Name}</Text>
-                <Text>{this.state.team2Score}</Text>
+                <View style={{borderLeftWidth: '4px', width: '87%'}}>
+                    <Text style={teamNameStyle}>{this.state.team2Name}</Text>
+                </View>
+                <Text style={scoreStyle}>{this.state.team2Score}</Text>
             </View>
         </View>
     }
+}
+
+const teamNameStyle = {
+    fontSize: 25,
+    lineHeight: 50
+}
+
+const scoreStyle = {
+    fontSize: 25,
+    lineHeight: 50
 }
