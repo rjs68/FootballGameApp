@@ -1,7 +1,8 @@
 import React from 'react';
 import { 
     Text ,
-    View
+    View,
+    ImageBackground
 } from 'react-native';
 
 export class ScoreBoard extends React.Component {
@@ -18,26 +19,30 @@ export class ScoreBoard extends React.Component {
     }
 
     render() {
-        return <View style={{flex: 1, flexDirection: 'column', borderTopWidth: 20, borderTopColor: 'transparent'}}>
-            <View style={{flex:1, flexDirection: 'row'}}>
-                <View style={teamViewStyle}>
-                    <Text style={teamNameStyle}>{this.state.team1Name}</Text>
+        return <View style={{flex: 1, flexDirection: 'column'}}>
+            <ImageBackground source={require('../images/pitch.jpg')} style={{width: '100%', height: '100%'}}>
+                <View style={{flex:1, flexDirection: 'row'}}>
+                    <View style={teamViewStyle}>
+                        <View style={{height: 30}} />
+                        <Text style={teamNameStyle}>{this.state.team1Name}</Text>
+                    </View>
+                    <Text style={scoreStyle}>{this.state.team1Score}</Text>
                 </View>
-                <Text style={scoreStyle}>{this.state.team1Score}</Text>
-            </View>
-            <View style={teamViewStyle}>
-                <Text style={teamScorersStyle}>{this.state.team1Scorers}</Text>
-            </View>
-            <View style={{height: 20}} />
-            <View style={{flex:1, flexDirection: 'row'}}>
                 <View style={teamViewStyle}>
-                    <Text style={teamNameStyle}>{this.state.team2Name}</Text>
+                    <Text style={teamScorersStyle}>{this.state.team1Scorers}</Text>
                 </View>
-                <Text style={scoreStyle}>{this.state.team2Score}</Text>
-            </View>
-            <View style={teamViewStyle}>
-                <Text style={teamScorersStyle}>{this.state.team2Scorers}</Text>
-            </View>
+                <View style={{height: 20}} />
+                <View style={{flex:1, flexDirection: 'row'}}>
+                    <View style={teamViewStyle}>
+                        <Text style={teamNameStyle}>{this.state.team2Name}</Text>
+                    </View>
+                    <Text style={scoreStyle}>{this.state.team2Score}</Text>
+                </View>
+                <View style={teamViewStyle}>
+                    <Text style={teamScorersStyle}>{this.state.team2Scorers}</Text>
+                </View>
+                <View style={{height: 30}} />
+            </ImageBackground>
         </View>
     }
 }
@@ -46,12 +51,19 @@ const teamNameStyle = {
     fontSize: 25,
     fontFamily: 'sans-serif-medium',
     lineHeight: 50,
+    color: 'white',
+    textShadowColor: 'black',
+    textShadowRadius: 10
 }
 
 const scoreStyle = {
     fontSize: 25,
     fontFamily: 'sans-serif-medium',
-    lineHeight: 50
+    lineHeight: 50,
+    textAlignVertical: 'bottom',
+    color: 'white',
+    textShadowColor: 'black',
+    textShadowRadius: 10
 }
 
 const teamViewStyle = {
@@ -64,5 +76,8 @@ const teamScorersStyle = {
     lineHeight: 20,
     fontFamily: 'sans-serif',
     textAlignVertical: 'top',
-    width: '80%'
+    width: '80%',
+    color: 'white',
+    textShadowColor: 'black',
+    textShadowRadius: 10
 }
