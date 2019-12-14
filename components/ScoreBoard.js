@@ -10,8 +10,10 @@ export class ScoreBoard extends React.Component {
         this.state = {
             team1Name: "Manchester United",
             team2Name: "Manchester City",
-            team1Score: "0",
-            team2Score: "0",
+            team1Score: "3",
+            team2Score: "1",
+            team1Scorers: "Rashford (23'), Martial (78'), Mata (82')",
+            team2Scorers: "Aguero (52')"
         };
     }
 
@@ -23,11 +25,18 @@ export class ScoreBoard extends React.Component {
                 </View>
                 <Text style={scoreStyle}>{this.state.team1Score}</Text>
             </View>
+            <View style={teamViewStyle}>
+                <Text style={teamScorersStyle}>{this.state.team1Scorers}</Text>
+            </View>
+            <View style={{height: 20}} />
             <View style={{flex:1, flexDirection: 'row'}}>
                 <View style={teamViewStyle}>
                     <Text style={teamNameStyle}>{this.state.team2Name}</Text>
                 </View>
                 <Text style={scoreStyle}>{this.state.team2Score}</Text>
+            </View>
+            <View style={teamViewStyle}>
+                <Text style={teamScorersStyle}>{this.state.team2Scorers}</Text>
             </View>
         </View>
     }
@@ -35,11 +44,13 @@ export class ScoreBoard extends React.Component {
 
 const teamNameStyle = {
     fontSize: 25,
-    lineHeight: 50
+    fontFamily: 'sans-serif-medium',
+    lineHeight: 50,
 }
 
 const scoreStyle = {
     fontSize: 25,
+    fontFamily: 'sans-serif-medium',
     lineHeight: 50
 }
 
@@ -47,4 +58,11 @@ const teamViewStyle = {
     borderLeftWidth: 25,
     borderLeftColor: 'transparent',
     width: '87%'
+}
+
+const teamScorersStyle = {
+    lineHeight: 20,
+    fontFamily: 'sans-serif',
+    textAlignVertical: 'top',
+    width: '80%'
 }
