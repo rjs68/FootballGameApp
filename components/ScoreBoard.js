@@ -16,15 +16,15 @@ export class ScoreBoard extends React.Component {
     }
 
     render() {
-        return <View style={{flex: 1, flexDirection: 'column'}}>
+        return <View style={{flex: 1, flexDirection: 'column', borderTopWidth: 20, borderTopColor: 'transparent'}}>
             <View style={{flex:1, flexDirection: 'row'}}>
-                <View style={{width: '87%'}}>
+                <View style={teamViewStyle}>
                     <Text style={teamNameStyle}>{this.state.team1Name}</Text>
                 </View>
                 <Text style={scoreStyle}>{this.state.team1Score}</Text>
             </View>
             <View style={{flex:1, flexDirection: 'row'}}>
-                <View style={{borderLeftWidth: '4px', width: '87%'}}>
+                <View style={teamViewStyle}>
                     <Text style={teamNameStyle}>{this.state.team2Name}</Text>
                 </View>
                 <Text style={scoreStyle}>{this.state.team2Score}</Text>
@@ -41,4 +41,10 @@ const teamNameStyle = {
 const scoreStyle = {
     fontSize: 25,
     lineHeight: 50
+}
+
+const teamViewStyle = {
+    borderLeftWidth: 25,
+    borderLeftColor: 'transparent',
+    width: '87%'
 }
