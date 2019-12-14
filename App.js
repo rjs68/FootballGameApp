@@ -25,6 +25,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import { ScoreBoard } from './components/ScoreBoard';
+import { EventDisplay } from './components/EventDisplay';
 
 const App: () => React$Node = () => {
   return (
@@ -35,6 +36,7 @@ const App: () => React$Node = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <ScoreBoard />
+          <EventDisplay />
         </ScrollView>
       </SafeAreaView>
     </>
