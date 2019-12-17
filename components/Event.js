@@ -25,7 +25,7 @@ const mainViewStyle = {
     flexDirection: 'column', 
     justifyContent: 'space-around', 
     height: 200,
-    backgroundColor: '#E6FFDE',
+    backgroundColor: '#E6FFDE'
 }
 
 const textStyle = {

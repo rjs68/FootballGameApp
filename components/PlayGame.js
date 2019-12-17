@@ -16,21 +16,36 @@ export class PlayGame extends React.Component {
         this.state = {
             minute: 0,
             team1: "Manchester United",
-            team2: "Manchester City"
+            team2: "Manchester City",
+            gameZone: "Middle"
         };
         this.addMinute = this.addMinute.bind(this);
         this.newMessage = this.newMessage.bind(this);
+        this.changeTeam = this.changeTeam.bind(this);
+        this.changeGameZone = this.changeGameZone.bind(this);
     }
 
     startTeam(){
         const num = Math.random();
         if(num>0.5){
             this.setState({currentTeam: this.state.team1});
-            this.setState({message: "Kick off to " + this.state.team1})
+            this.setState({message: "Kick off to " + this.state.team1});
         } else {
             this.setState({currentTeam: this.state.team2});
-            this.setState({message: "Kick off to " + this.state.team2})
+            this.setState({message: "Kick off to " + this.state.team2});
         }
+    }
+
+    changeTeam(){
+        if(this.state.currentTeam === this.state.team1){
+            this.setState({currentTeam: this.state.team2});
+        }else{
+            this.setState({currentTeam: this.state.team1});
+        }
+    }
+
+    changeGameZone(newGameZone){
+        this.setState({gameZone: newGameZone});
     }
 
     componentDidMount(){
@@ -46,12 +61,15 @@ export class PlayGame extends React.Component {
     }
 
     render() {
-        return <View>
+        return <View style={{backgroundColor: '#E6FFDE', flexDirection: 'column', alignItems: 'stretch'}}>
                     <ScoreBoard />
                     <EventDisplay minute={this.state.minute} message={this.state.message}/>
                     <NextEvent  addMinute={this.addMinute.bind(this)} 
                                 newMessage={this.newMessage.bind(this)}
-                                currentTeam={this.state.currentTeam}/>
+                                changeTeam={this.changeTeam.bind(this)}
+                                changeGameZone={this.changeGameZone.bind(this)}
+                                currentTeam={this.state.currentTeam}
+                                gameZone={this.state.gameZone}/>
                 </View>
     }
     
