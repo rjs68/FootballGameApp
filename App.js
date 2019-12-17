@@ -11,21 +11,14 @@ import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
-  View,
-  Text,
   StatusBar,
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { ScoreBoard } from './components/ScoreBoard';
-import { EventDisplay } from './components/EventDisplay';
+import { PlayGame } from './components/PlayGame';
 
 const App: () => React$Node = () => {
   return (
@@ -36,8 +29,7 @@ const App: () => React$Node = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}
           scrollEnabled={false}>
-          <ScoreBoard />
-          <EventDisplay />
+          <PlayGame />
         </ScrollView>
       </SafeAreaView>
     </>

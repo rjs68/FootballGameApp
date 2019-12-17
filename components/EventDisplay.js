@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import {
     Animated,
-    Text,
-    View
 } from 'react-native';
 
 import { Event } from './Event';
@@ -20,14 +18,15 @@ export const EventDisplay = (props) => {
           }
         ).start();
       }, [])
-    
+
       return (
         <Animated.View                 // Special animatable View
           style={{
             opacity: fadeAnim,         // Bind opacity to animated value
           }}
         >
-            <Event minute='0' message='Kick off to Manchester United'/>
+            <Event minute={props.minute} message={props.message}/>
         </Animated.View>
       );
-    }
+      
+}
