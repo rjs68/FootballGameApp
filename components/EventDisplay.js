@@ -1,39 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
-    ScrollView,
-    TextInput,
-    View,
-    Text
+    Animated,
+    Text,
+    View
 } from 'react-native';
 
-export class EventDisplay extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            displayMessages: ["Kick off to Manchester United"]
-        }
+import { Event } from './Event';
+
+export const EventDisplay = (props) => {
+    const [fadeAnim] = useState(new Animated.Value(0))  // Initial value for opacity: 0
+    
+    React.useEffect(() => {
+        Animated.timing(
+          fadeAnim,
+          {
+            toValue: 1,
+            duration: 5000,
+          }
+        ).start();
+      }, [])
+    
+      return (
+        <Animated.View                 // Special animatable View
+          style={{
+            opacity: fadeAnim,         // Bind opacity to animated value
+          }}
+        >
+            <Event minute='0' message='Kick off to Manchester United'/>
+        </Animated.View>
+      );
     }
-
-    render(){
-        return <ScrollView style={{borderWidth: 10, borderColor: 'transparent'}}>
-            <View style={{flex: 1, flexDirection: 'row'}}>
-                <Text style={textStyle}>1'</Text>
-                <TextInput editable = {false} style={textInputStyle}>{this.state.displayMessages[0]}</TextInput>
-            </View>
-        </ScrollView>
-    }
-}
-
-const textStyle = {
-    width: 40,
-    textAlignVertical: 'center',
-    textAlign: 'center',
-    fontSize: 14
-}
-
-const textInputStyle = {
-    textAlignVertical: 'center',
-    fontSize: 14,
-    color: 'black'
-}

@@ -34,7 +34,8 @@ const App: () => React$Node = () => {
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
+          style={styles.scrollView}
+          scrollEnabled={false}>
           <ScoreBoard />
           <EventDisplay />
         </ScrollView>

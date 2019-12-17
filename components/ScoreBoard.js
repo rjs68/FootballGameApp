@@ -11,10 +11,10 @@ export class ScoreBoard extends React.Component {
         this.state = {
             team1Name: "Manchester United",
             team2Name: "Manchester City",
-            team1Score: "3",
-            team2Score: "1",
-            team1Scorers: "Rashford (23'), Martial (78'), Mata (82')",
-            team2Scorers: "Aguero (52')"
+            team1Score: "0",
+            team2Score: "0",
+            team1Scorers: "",
+            team2Scorers: ""
         };
     }
 
