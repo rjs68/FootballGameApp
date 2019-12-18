@@ -43,6 +43,7 @@ export class NextEvent extends React.Component {
                 message = "He shoots...";
                 if(num<0.2){
                     message += "\nGOAL!!!";
+                    this.props.addGoal(this.props.currentTeam);
                     this.props.changeGameZone("Middle");
                 }else{
                     message += "\nHe can't find the net";

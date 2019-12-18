@@ -16,10 +16,15 @@ export class PlayGame extends React.Component {
         this.state = {
             minute: 0,
             team1: "Manchester United",
+            team1Score: 0,
+            team1Scorers: "",
             team2: "Manchester City",
+            team2Score: 0,
+            team2Scorers: "",
             gameZone: "Middle"
         };
         this.addMinute = this.addMinute.bind(this);
+        this.addGoal = this.addGoal.bind(this);
         this.newMessage = this.newMessage.bind(this);
         this.changeTeam = this.changeTeam.bind(this);
         this.changeGameZone = this.changeGameZone.bind(this);
@@ -56,20 +61,38 @@ export class PlayGame extends React.Component {
         this.setState({minute: this.state.minute + 1});
     }
 
+    addGoal(team){
+        if(team === this.state.team1){
+            this.setState({team1Score: this.state.team1Score + 1});
+        }else {
+            this.setState({team2Score: this.state.team2Score + 1});
+        }
+    }
+
     newMessage(newMessage){
         this.setState({message: newMessage});
     }
 
     render() {
         return <View style={{backgroundColor: '#E6FFDE', flexDirection: 'column', alignItems: 'stretch'}}>
-                    <ScoreBoard />
-                    <EventDisplay minute={this.state.minute} message={this.state.message}/>
-                    <NextEvent  addMinute={this.addMinute.bind(this)} 
-                                newMessage={this.newMessage.bind(this)}
-                                changeTeam={this.changeTeam.bind(this)}
-                                changeGameZone={this.changeGameZone.bind(this)}
-                                currentTeam={this.state.currentTeam}
-                                gameZone={this.state.gameZone}/>
+                    <ScoreBoard 
+                        team1={this.state.team1}
+                        team1Score={this.state.team1Score}
+                        team1Scorers={this.state.team1Scorers}
+                        team2={this.state.team2}
+                        team2Score={this.state.team2Score}
+                        team2Scorers={this.state.team2Scorers}/>
+                    <EventDisplay 
+                        minute={this.state.minute} 
+                        message={this.state.message}/>
+                    <NextEvent  
+                        addMinute={this.addMinute.bind(this)} 
+                        addGoal={this.addGoal.bind(this)}
+                        newMessage={this.newMessage.bind(this)}
+                        changeTeam={this.changeTeam.bind(this)}
+                        changeGameZone={this.changeGameZone.bind(this)}
+                        currentTeam={this.state.currentTeam}
+                        gameZone={this.state.gameZone}/>
                 </View>
     }
     

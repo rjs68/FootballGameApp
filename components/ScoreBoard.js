@@ -6,16 +6,8 @@ import {
 } from 'react-native';
 
 export class ScoreBoard extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            team1Name: "Manchester United",
-            team2Name: "Manchester City",
-            team1Score: "0",
-            team2Score: "0",
-            team1Scorers: "",
-            team2Scorers: ""
-        };
+    constructor(props) {
+        super(props);
     }
 
     render() {
@@ -24,22 +16,22 @@ export class ScoreBoard extends React.Component {
                 <View style={{flex:1, flexDirection: 'row'}}>
                     <View style={teamViewStyle}>
                         <View style={{height: 30}} />
-                        <Text style={teamNameStyle}>{this.state.team1Name}</Text>
+                        <Text style={teamNameStyle}>{this.props.team1}</Text>
                     </View>
-                    <Text style={scoreStyle}>{this.state.team1Score}</Text>
+                    <Text style={scoreStyle}>{this.props.team1Score}</Text>
                 </View>
                 <View style={teamViewStyle}>
-                    <Text style={teamScorersStyle}>{this.state.team1Scorers}</Text>
+                    <Text style={teamScorersStyle}>{this.props.team1Scorers}</Text>
                 </View>
                 <View style={{height: 20}} />
                 <View style={{flex:1, flexDirection: 'row'}}>
                     <View style={teamViewStyle}>
-                        <Text style={teamNameStyle}>{this.state.team2Name}</Text>
+                        <Text style={teamNameStyle}>{this.props.team2}</Text>
                     </View>
-                    <Text style={scoreStyle}>{this.state.team2Score}</Text>
+                    <Text style={scoreStyle}>{this.props.team2Score}</Text>
                 </View>
                 <View style={teamViewStyle}>
-                    <Text style={teamScorersStyle}>{this.state.team2Scorers}</Text>
+                    <Text style={teamScorersStyle}>{this.props.team2Scorers}</Text>
                 </View>
                 <View style={{height: 30}} />
             </ImageBackground>
