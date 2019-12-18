@@ -1,14 +1,28 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useState } from 'react';
+import { 
+    View,
+    Animated
+} from 'react-native';
 
-export class Triangle extends React.Component { 
-    constructor(props){
-        super(props);
-    }
+export const Triangle = (props) => {
+    const [fadeAnim] = useState(new Animated.Value(0))  // Initial value for opacity: 0
 
-    render() { 
-        return <View style={[triangle, {top: this.props.position}]} /> }
-    }
+    React.useEffect(() => {
+        Animated.timing(
+            fadeAnim,
+            {
+            toValue: 1,
+            duration: 2000,
+            }
+        ).start();
+    }, [])
+
+        return (
+        <Animated.View style={{opacity: fadeAnim}}>
+            <View style={[triangle, {top: props.position}] }/> 
+        </Animated.View>
+        )
+}
 
 const triangle = { 
     position: 'absolute',
@@ -22,4 +36,4 @@ const triangle = {
     borderBottomWidth: 30, 
     borderLeftColor: 'transparent', 
     borderRightColor: 'transparent', 
-    borderBottomColor: 'red' }
+    borderBottomColor: 'red'}
