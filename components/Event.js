@@ -23,9 +23,8 @@ export class Event extends React.Component{
 const mainViewStyle = {
     flex: 1, 
     flexDirection: 'column', 
-    justifyContent: 'space-around', 
-    height: 200,
-    backgroundColor: '#E6FFDE'
+    justifyContent: 'space-around'
+    // backgroundColor: '#E6FFDE'
 }
 
 const textStyle = {
@@ -49,5 +48,7 @@ const clockStyle = {
     borderRadius: 10,
     backgroundColor: '#D2FFC4',
     width: '30%',
-    alignSelf: 'center'
+    position: 'absolute',
+    top: 20,
+    right: 139
 }

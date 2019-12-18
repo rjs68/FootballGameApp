@@ -11,7 +11,7 @@ import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
-  StatusBar,
+  StatusBar
 } from 'react-native';
 
 import {
@@ -38,7 +38,7 @@ const App: () => React$Node = () => {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: Colors.lighter,
+    backgroundColor: Colors.lighter
   },
   engine: {
     position: 'absolute',

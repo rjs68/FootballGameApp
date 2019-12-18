@@ -3,16 +3,17 @@ import React from 'react';
 import { ScoreBoard } from './ScoreBoard';
 import { EventDisplay } from './EventDisplay';
 import { NextEvent } from './NextEvent';
+import { DynamicPitch } from './DynamicPitch';
 
 import { 
     View,
-    Button
+    Dimensions,
+    ImageBackground
 } from 'react-native';
 
 export class PlayGame extends React.Component {
     constructor() {
         super();
-        const num = Math.random();
         this.state = {
             minute: 0,
             team1: "Manchester United",
@@ -74,7 +75,8 @@ export class PlayGame extends React.Component {
     }
 
     render() {
-        return <View style={{backgroundColor: '#E6FFDE', flexDirection: 'column', alignItems: 'stretch'}}>
+        return <View style={{backgroundColor: '#E6FFDE', flexDirection: 'column', height: Math.round(Dimensions.get('window').height)}}>
+                    <View style={{height: '25%'}}>
                     <ScoreBoard 
                         team1={this.state.team1}
                         team1Score={this.state.team1Score}
@@ -82,17 +84,22 @@ export class PlayGame extends React.Component {
                         team2={this.state.team2}
                         team2Score={this.state.team2Score}
                         team2Scorers={this.state.team2Scorers}/>
-                    <EventDisplay 
-                        minute={this.state.minute} 
-                        message={this.state.message}/>
-                    <NextEvent  
-                        addMinute={this.addMinute.bind(this)} 
-                        addGoal={this.addGoal.bind(this)}
-                        newMessage={this.newMessage.bind(this)}
-                        changeTeam={this.changeTeam.bind(this)}
-                        changeGameZone={this.changeGameZone.bind(this)}
-                        currentTeam={this.state.currentTeam}
-                        gameZone={this.state.gameZone}/>
+                    </View>
+                    <View style={{height: '75%'}}>
+                        <ImageBackground source={require('../images/birdseyePitch.png')} style={{width: '95%', height: '98%', alignSelf: 'center', position: 'absolute', left: 20}}>
+                            <EventDisplay 
+                                minute={this.state.minute}
+                                message={this.state.message}/>
+                            <NextEvent  
+                                addMinute={this.addMinute.bind(this)} 
+                                addGoal={this.addGoal.bind(this)}
+                                newMessage={this.newMessage.bind(this)}
+                                changeTeam={this.changeTeam.bind(this)}
+                                changeGameZone={this.changeGameZone.bind(this)}
+                                currentTeam={this.state.currentTeam}
+                                gameZone={this.state.gameZone}/>
+                        </ImageBackground>
+                    </View>
                 </View>
     }
     

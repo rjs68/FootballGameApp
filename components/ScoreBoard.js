@@ -13,9 +13,9 @@ export class ScoreBoard extends React.Component {
     render() {
         return <View style={{flex: 1, flexDirection: 'column'}}>
             <ImageBackground source={require('../images/pitch.jpg')} style={{width: '100%', height: '100%'}}>
-                <View style={{flex:1, flexDirection: 'row'}}>
+                <View style={{flexDirection: 'row'}}>
                     <View style={teamViewStyle}>
-                        <View style={{height: 30}} />
+                        <View style={{height: 10}} />
                         <Text style={teamNameStyle}>{this.props.team1}</Text>
                     </View>
                     <Text style={scoreStyle}>{this.props.team1Score}</Text>
@@ -23,8 +23,8 @@ export class ScoreBoard extends React.Component {
                 <View style={teamViewStyle}>
                     <Text style={teamScorersStyle}>{this.props.team1Scorers}</Text>
                 </View>
-                <View style={{height: 20}} />
-                <View style={{flex:1, flexDirection: 'row'}}>
+                <View style={{height: 10}} />
+                <View style={{flexDirection: 'row'}}>
                     <View style={teamViewStyle}>
                         <Text style={teamNameStyle}>{this.props.team2}</Text>
                     </View>
@@ -33,7 +33,7 @@ export class ScoreBoard extends React.Component {
                 <View style={teamViewStyle}>
                     <Text style={teamScorersStyle}>{this.props.team2Scorers}</Text>
                 </View>
-                <View style={{height: 30}} />
+                <View style={{height: 10}} />
             </ImageBackground>
         </View>
     }

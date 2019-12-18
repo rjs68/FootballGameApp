@@ -71,9 +71,13 @@ export class NextEvent extends React.Component {
 }
 
 const mainStyle = {
-    backgroundColor: '#E6FFDE',
-    height: 100,
-    justifyContent: 'center'
+    // backgroundColor: '#E6FFDE',
+    height: '100%',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 220,
+    left: 1,
+    width: 350
 }
 
 const textStyle = {
