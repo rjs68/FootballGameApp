@@ -3,7 +3,7 @@ import React from 'react';
 import { ScoreBoard } from './ScoreBoard';
 import { EventDisplay } from './EventDisplay';
 import { NextEvent } from './NextEvent';
-import { DynamicPitch } from './DynamicPitch';
+import { Chevron } from './Chevron';
 
 import { 
     View,
@@ -86,7 +86,7 @@ export class PlayGame extends React.Component {
                         team2Scorers={this.state.team2Scorers}/>
                     </View>
                     <View style={{height: '75%'}}>
-                        <ImageBackground source={require('../images/birdseyePitch.png')} style={{width: '95%', height: '98%', alignSelf: 'center', position: 'absolute', left: 20}}>
+                        <ImageBackground source={require('../images/birdseyePitch.png')} style={{width: '93%', height: '98%', alignSelf: 'center', position: 'absolute', left: 26}}>
                             <EventDisplay 
                                 minute={this.state.minute}
                                 message={this.state.message}/>
@@ -100,6 +100,8 @@ export class PlayGame extends React.Component {
                                 gameZone={this.state.gameZone}/>
                         </ImageBackground>
                     </View>
+                    <Chevron leftPosition={0} rightPosition={null} />
+                    <Chevron leftPosition={null} rightPosition={0} />
                 </View>
     }
     

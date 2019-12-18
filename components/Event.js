@@ -38,17 +38,25 @@ const textStyle = {
 const textInputStyle = {
     textAlignVertical: 'top',
     textAlign: 'center',
-    fontSize: 22,
-    color: 'black'
+    width: '80%',
+    fontSize: 25,
+    color: 'white',
+    fontFamily: 'sans-serif-medium',
+    textShadowColor: 'black',
+    textShadowRadius: 30,
+    position: 'absolute',
+    top: 135,
+    right: 45,
+    alignSelf: 'center'
 }
 
 const clockStyle = {
-    borderColor: '#248E04',
+    borderColor: 'black',
     borderWidth: 5,
     borderRadius: 10,
     backgroundColor: '#D2FFC4',
     width: '30%',
     position: 'absolute',
-    top: 20,
+    top: 30,
     right: 139
 }

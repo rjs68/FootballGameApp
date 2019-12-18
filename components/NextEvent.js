@@ -75,15 +75,15 @@ const mainStyle = {
     height: '100%',
     justifyContent: 'center',
     position: 'absolute',
-    top: 220,
-    left: 1,
+    top: 210,
+    left: -7,
     width: 350
 }
 
 const textStyle = {
     textAlign: 'center',
     fontSize: 25,
-    fontFamily: 'sans-serif',
+    fontFamily: 'sans-serif-medium',
 }
 
 const buttonStyle = {
