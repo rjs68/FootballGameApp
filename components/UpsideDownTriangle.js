@@ -12,7 +12,7 @@ export const UpsideDownTriangle = (props) => {
             fadeAnim,
             {
             toValue: 1,
-            duration: 2000,
+            duration: 500,
             }
         ).start();
     }, [])

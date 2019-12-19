@@ -10,9 +10,6 @@ export class NextEvent extends React.Component {
     constructor(props){
         super(props);
         this.handlePress = this.handlePress.bind(this);
-        this.state = {
-            timePassed: false
-        };
         this.addScorer = this.addScorer.bind(this);
     }
 
@@ -22,7 +19,7 @@ export class NextEvent extends React.Component {
             const players = ["Rashford", "Martial", "James", "Mata", "Pogba", "Lingard"];
             this.props.addScorer(players[num]);
         } else {
-            const players = ["Aguero", "Jesus", "Sterline", "B. Silva", "De Bruyne", "D. Silva"];
+            const players = ["Aguero", "Jesus", "Sterling", "B. Silva", "De Bruyne", "D. Silva"];
             this.props.addScorer(players[num]);
         }
     }
