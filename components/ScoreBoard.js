@@ -11,7 +11,7 @@ export class ScoreBoard extends React.Component {
     }
 
     render() {
-        return <View style={{flex: 1, flexDirection: 'column'}}>
+        return <View style={{flex: 1, flexDirection: 'column', borderWidth: 1, borderColor: 'white'}}>
             <ImageBackground source={require('../images/pitch.jpg')} style={{width: '100%', height: '100%'}}>
                 <View style={{flexDirection: 'row'}}>
                     <View style={teamViewStyle}>

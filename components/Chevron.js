@@ -12,23 +12,20 @@ export class Chevron extends React.Component {
 
     render() {
         return <View style={[viewStyle, {left:this.props.leftPosition, right: this.props.rightPosition}]}>
-            <Triangle position={-270} />
-            <Triangle position={-200} />
+            <Triangle position={-240} />
             <Triangle position={-130} />
-            <Triangle position={-60} />
-            <Triangle position={10} />
-            <Triangle position={80} />
-            <Triangle position={150} />
-            <Triangle position={220} />
+            <Triangle position={-20} />
+            <Triangle position={100} />
+            <Triangle position={210} />
         </View>
     }
 }
 
 const viewStyle = {
     justifyContent: 'center',
-    backgroundColor: 'black',
-    height: Math.round(Dimensions.get('window').height) * 0.75,
+    backgroundColor: '#277D0E',
+    height: Math.round(Dimensions.get('window').height) * 0.75 - 25,
     width: 30,
     position: 'absolute',
-    bottom: 0
+    bottom: 22
 }

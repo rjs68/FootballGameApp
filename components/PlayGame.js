@@ -85,7 +85,7 @@ export class PlayGame extends React.Component {
                         team2Score={this.state.team2Score}
                         team2Scorers={this.state.team2Scorers}/>
                     </View>
-                    <View style={{height: '75%'}}>
+                    <View style={{height: '75%', borderLeftWidth: 1, borderRightWidth: 1, borderBottomWidth: 3, borderColor: 'white'}}>
                         <ImageBackground source={require('../images/birdseyePitch.png')} style={{width: '93%', height: '98%', alignSelf: 'center', position: 'absolute', left: 26}}>
                             <EventDisplay 
                                 minute={this.state.minute}
@@ -99,9 +99,10 @@ export class PlayGame extends React.Component {
                                 currentTeam={this.state.currentTeam}
                                 gameZone={this.state.gameZone}/>
                         </ImageBackground>
+                        <Chevron leftPosition={0} rightPosition={null} />
+                        <Chevron leftPosition={null} rightPosition={0} />
                     </View>
-                    <Chevron leftPosition={0} rightPosition={null} />
-                    <Chevron leftPosition={null} rightPosition={0} />
+                    
                 </View>
     }
     
