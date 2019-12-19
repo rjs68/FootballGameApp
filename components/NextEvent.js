@@ -13,6 +13,18 @@ export class NextEvent extends React.Component {
         this.state = {
             timePassed: false
         };
+        this.addScorer = this.addScorer.bind(this);
+    }
+
+    addScorer(){
+        const num = Math.floor(Math.random()*5);
+        if(this.props.currentTeam === "Manchester United"){
+            const players = ["Rashford", "Martial", "James", "Mata", "Pogba", "Lingard"];
+            this.props.addScorer(players[num]);
+        } else {
+            const players = ["Aguero", "Jesus", "Sterline", "B. Silva", "De Bruyne", "D. Silva"];
+            this.props.addScorer(players[num]);
+        }
     }
 
     handlePress(){
@@ -44,6 +56,7 @@ export class NextEvent extends React.Component {
                 if(num<0.2){
                     message += "\nGOAL!!!";
                     this.props.addGoal(this.props.currentTeam);
+                    this.addScorer();
                     this.props.changeGameZone("Middle");
                 }else{
                     message += "\nHe can't find the net";

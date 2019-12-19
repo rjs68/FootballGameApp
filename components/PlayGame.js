@@ -26,6 +26,7 @@ export class PlayGame extends React.Component {
         };
         this.addMinute = this.addMinute.bind(this);
         this.addGoal = this.addGoal.bind(this);
+        this.addScorer = this.addScorer.bind(this);
         this.newMessage = this.newMessage.bind(this);
         this.changeTeam = this.changeTeam.bind(this);
         this.changeGameZone = this.changeGameZone.bind(this);
@@ -70,6 +71,22 @@ export class PlayGame extends React.Component {
         }
     }
 
+    addScorer(scorer){
+        if(this.state.currentTeam === this.state.team1){
+            if(this.state.team1Scorers === ""){
+                this.setState({team1Scorers: scorer + " (" + this.state.minute + "')"});
+            }else {
+                this.setState({team1Scorers: this.state.team1Scorers + ", " + scorer + " (" + this.state.minute + "')"});
+            }
+        }else {
+            if(this.state.team2Scorers === ""){
+                this.setState({team2Scorers: scorer + " (" + this.state.minute + "')"});
+            }else {
+                this.setState({team2Scorers: this.state.team2Scorers + ", " + scorer + " (" + this.state.minute + "')"});
+            }
+        }
+    }
+
     newMessage(newMessage){
         this.setState({message: newMessage});
     }
@@ -93,6 +110,7 @@ export class PlayGame extends React.Component {
                             <NextEvent  
                                 addMinute={this.addMinute.bind(this)} 
                                 addGoal={this.addGoal.bind(this)}
+                                addScorer={this.addScorer.bind(this)}
                                 newMessage={this.newMessage.bind(this)}
                                 changeTeam={this.changeTeam.bind(this)}
                                 changeGameZone={this.changeGameZone.bind(this)}
