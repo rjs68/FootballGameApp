@@ -12,13 +12,23 @@ export class Chevron extends React.Component {
     }
 
     render() {
-        return <View style={[viewStyle, {left:this.props.leftPosition, right: this.props.rightPosition}]}>
-            <UpsideDownTriangle position={-240} />
-            <UpsideDownTriangle position={-130} />
-            <UpsideDownTriangle position={-20} />
-            <UpsideDownTriangle position={90} />
-            <UpsideDownTriangle position={200} />
-        </View>
+        if(this.props.currentTeam === "Manchester United"){
+            return <View style={[viewStyle, {left:this.props.leftPosition, right: this.props.rightPosition}]}>
+                        <Triangle position={-240} />
+                        <Triangle position={-130} />
+                        <Triangle position={-20} />
+                        <Triangle position={90} />
+                        <Triangle position={200} />
+                    </View>
+        } else {
+            return <View style={[viewStyle, {left:this.props.leftPosition, right: this.props.rightPosition}]}>
+                        <UpsideDownTriangle position={-240} />
+                        <UpsideDownTriangle position={-130} />
+                        <UpsideDownTriangle position={-20} />
+                        <UpsideDownTriangle position={90} />
+                        <UpsideDownTriangle position={200} />
+                    </View>
+        }
     }
 }
 

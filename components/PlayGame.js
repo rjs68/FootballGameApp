@@ -99,8 +99,8 @@ export class PlayGame extends React.Component {
                                 currentTeam={this.state.currentTeam}
                                 gameZone={this.state.gameZone}/>
                         </ImageBackground>
-                        <Chevron leftPosition={0} rightPosition={null} />
-                        <Chevron leftPosition={null} rightPosition={0} />
+                        <Chevron leftPosition={0} rightPosition={null} currentTeam={this.state.currentTeam}/>
+                        <Chevron leftPosition={null} rightPosition={0} currentTeam={this.state.currentTeam}/>
                     </View>
                     
                 </View>
