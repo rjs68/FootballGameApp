@@ -4,18 +4,28 @@ import {
   ImageBackground,
   Text,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from 'react-native';
 
+/**
+ * The main welcome screen of the app 
+ */
 export class HomeScreen extends React.Component {
+    constructor(props){
+      super(props);
+    }
+
     render() {
     return <View style={{height: Math.round(Dimensions.get('window').height)}}>
             <ImageBackground source={require('../images/stadium.jpg')} style={{width: '100%', height: '100%'}}>
               <Text style={textStyle}>
                 Football World
               </Text>
-              <TouchableOpacity>
-                <View style={buttonStyle}>
+              {/* Button to start the game */}
+              {/* <Button title="Next" onPress={this.props.handlePress} /> */}
+              <TouchableOpacity style={buttonStyle} onPress={this.props.handlePress}>
+                <View>
                   <Text style={buttonTextStyle}> 
                     Play
                   </Text>

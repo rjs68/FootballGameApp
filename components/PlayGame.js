@@ -11,6 +11,10 @@ import {
     ImageBackground
 } from 'react-native';
 
+/**
+ * Screen to assemble all the elements and provide gameplay methods
+ */
+
 export class PlayGame extends React.Component {
     constructor() {
         super();
@@ -32,6 +36,7 @@ export class PlayGame extends React.Component {
         this.changeGameZone = this.changeGameZone.bind(this);
     }
 
+    //Method to randomly determine the start team
     startTeam(){
         const num = Math.random();
         if(num>0.5){
@@ -43,6 +48,7 @@ export class PlayGame extends React.Component {
         }
     }
 
+    //Method to change the current team
     changeTeam(){
         if(this.state.currentTeam === this.state.team1){
             this.setState({currentTeam: this.state.team2});
@@ -51,18 +57,22 @@ export class PlayGame extends React.Component {
         }
     }
 
+    //Method to change the game zone
     changeGameZone(newGameZone){
         this.setState({gameZone: newGameZone});
     }
 
+    //Call to decide the starting team
     componentDidMount(){
         this.startTeam();
     }
 
+    //Adds a minute to the clock
     addMinute(){
         this.setState({minute: this.state.minute + 1});
     }
 
+    //Adds a goals to a specific team
     addGoal(team){
         if(team === this.state.team1){
             this.setState({team1Score: this.state.team1Score + 1});
@@ -71,6 +81,7 @@ export class PlayGame extends React.Component {
         }
     }
 
+    //Adds a goal scorer
     addScorer(scorer){
         if(this.state.currentTeam === this.state.team1){
             if(this.state.team1Scorers === ""){
@@ -87,10 +98,12 @@ export class PlayGame extends React.Component {
         }
     }
 
+    //Changes the on-screen message
     newMessage(newMessage){
         this.setState({message: newMessage});
     }
 
+    //Renders the components
     render() {
         return <View style={{backgroundColor: '#E6FFDE', flexDirection: 'column', height: Math.round(Dimensions.get('window').height)}}>
                     <View style={{height: '25%'}}>
