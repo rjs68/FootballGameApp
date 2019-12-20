@@ -47,6 +47,7 @@ const AppNavigator = createStackNavigator(
     Game: PlayGameClass,
   },
   {
+    headerMode: 'none',
     initialRouteName: 'Home',
   }
 );
