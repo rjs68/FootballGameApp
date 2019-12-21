@@ -4,13 +4,14 @@ import {
   ImageBackground,
   Text,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  TextInput
 } from 'react-native';
 
 /**
- * The main welcome screen of the app 
+ * The login screen of the app 
  */
-export class HomeScreen extends React.Component {
+export class LoginScreen extends React.Component {
     constructor(props){
       super(props);
     }
@@ -19,14 +20,18 @@ export class HomeScreen extends React.Component {
     return <View style={{height: Math.round(Dimensions.get('window').height)}}>
             <ImageBackground source={require('../images/stadium.jpg')} style={{width: '100%', height: '100%'}}>
               <Text style={textStyle}>
-                Football World
+                Login
               </Text>
-              {/* Button to start the game */}
-              {/* <Button title="Next" onPress={this.props.handlePress} /> */}
+              <TextInput style={[inputStyle, {top: 465}]}>
+                  Username
+              </TextInput>
+              <TextInput style={[inputStyle, {top: 470}]}>
+                  Password
+              </TextInput>
               <TouchableOpacity style={buttonStyle} onPress={this.props.handlePress}>
                 <View>
                   <Text style={buttonTextStyle}> 
-                    Play
+                    Login
                   </Text>
                 </View>
               </TouchableOpacity>
@@ -45,18 +50,30 @@ const textStyle = {
   fontFamily: 'sans-serif'
 }
 
-const buttonTextStyle = {
-  fontFamily: 'sans-serif',
-  fontSize: 30,
-  alignSelf: 'center'
+const inputStyle = {
+  borderColor: 'white',
+  borderWidth: 1,
+  borderRadius: 10,
+  backgroundColor: 'grey',
+  width: '70%',
+  alignSelf: 'center',
+  top: 460,
+  fontSize: 20,
+  textAlign: 'center'
 }
 
-const buttonStyle = {
-  borderColor: '#030BCC',
-  borderWidth: 3,
-  borderRadius: 10,
-  backgroundColor: '#D7D9FF',
-  width: '40%',
-  alignSelf: 'center',
-  top: 550
-}
+const buttonTextStyle = {
+    fontFamily: 'sans-serif',
+    fontSize: 30,
+    alignSelf: 'center'
+  }
+  
+  const buttonStyle = {
+    borderColor: '#030BCC',
+    borderWidth: 3,
+    borderRadius: 10,
+    backgroundColor: '#D7D9FF',
+    width: '40%',
+    alignSelf: 'center',
+    top: 500
+  }

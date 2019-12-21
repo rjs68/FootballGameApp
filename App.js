@@ -13,25 +13,41 @@ import {
   ScrollView
 } from 'react-native';
 
-import 'react-native-gesture-handler'
+import 'react-native-gesture-handler';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import { PlayGame } from './components/PlayGame';
 import { HomeScreen } from './screens/HomeScreen';
+import { LoginScreen } from './screens/LoginScreen';
 
 class HomeScreenClass extends React.Component {
   constructor(){
     super();
-    this.handlePress = this.handlePress.bind(this);
+    this.handleHomePress = this.handleHomePress.bind(this);
   }
 
-  handlePress() {
+  handleHomePress() {
+    this.props.navigation.navigate('Login')
+  }
+
+  render() {
+    return <HomeScreen handlePress={this.handleHomePress.bind(this)} />
+  }
+}
+
+class LoginScreenClass extends React.Component {
+  constructor(){
+    super();
+    this.handleLoginPress = this.handleLoginPress.bind(this);
+  }
+
+  handleLoginPress() {
     this.props.navigation.navigate('Game')
   }
 
   render() {
-    return <HomeScreen handlePress={this.handlePress.bind(this)} />
+    return <LoginScreen handlePress={this.handleLoginPress.bind(this)} />
   }
 }
 
@@ -44,6 +60,7 @@ class PlayGameClass extends React.Component {
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreenClass,
+    Login: LoginScreenClass,
     Game: PlayGameClass,
   },
   {
@@ -53,19 +70,3 @@ const AppNavigator = createStackNavigator(
 );
 
 export default createAppContainer(AppNavigator);
-
-// const App: () => React$Node = () => {
-//   return (
-//     <>
-//       <SafeAreaView>
-//         <ScrollView
-//           contentInsetAdjustmentBehavior="automatic"
-//           scrollEnabled={false}>
-//           <HomeScreen />
-//         </ScrollView>
-//       </SafeAreaView>
-//     </>
-//   );
-// };
-
-// export default App;
