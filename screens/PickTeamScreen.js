@@ -25,8 +25,8 @@ export class PickTeamScreen extends React.Component {
               <Text style={textStyle}>
                 Pick Teams
               </Text>
-              <TeamPicker top={460} initialValue="Home Team..."/>
-              <TeamPicker top={465} initialValue="Away Team..."/>
+              <TeamPicker top={460} initialValue="Home Team..." setTeam={this.props.setHomeTeam}/>
+              <TeamPicker top={465} initialValue="Away Team..." setTeam={this.props.setAwayTeam}/>
               <TouchableOpacity style={buttonStyle} onPress={this.props.handlePress}>
                 <View>
                   <Text style={buttonTextStyle}> 

@@ -11,33 +11,34 @@ export class TeamPicker extends React.Component {
     return <Picker
         selectedValue={this.state.language}
         style={[inputStyle, {top: this.props.top}]}
-        onValueChange={(itemValue, itemIndex) => {
+        onValueChange={(itemValue) => {
             if(itemValue != 0){
-                this.setState({language: itemValue})
+                this.setState({language: itemValue});
+                this.props.setTeam(itemValue);
             }
         }
         }>
         <Picker.Item label={"Select " + this.props.initialValue} value="0" />
-        <Picker.Item label="Arsenal" value="ars" />
-        <Picker.Item label="Aston Villa" value="ast" />
-        <Picker.Item label="Bournemouth" value="brn" />
-        <Picker.Item label="Brighton" value="bri" />
-        <Picker.Item label="Burnley" value="bur" />
-        <Picker.Item label="Chelsea" value="che" />
-        <Picker.Item label="Crystal Palace" value="cry" />
-        <Picker.Item label="Everton" value="evt" />
-        <Picker.Item label="Leicester City" value="lei" />
-        <Picker.Item label="Liverpool" value="liv" />
-        <Picker.Item label="Manchester City" value="mnc" />
-        <Picker.Item label="Manchester United" value="mnu" />
-        <Picker.Item label="Newcastle United" value="nwc" />
-        <Picker.Item label="Norwich City" value="nor" />
-        <Picker.Item label="Sheffield United" value="she" />
-        <Picker.Item label="Southampton" value="sth" />
-        <Picker.Item label="Tottenham" value="tot" />
-        <Picker.Item label="Watford" value="wat" />
-        <Picker.Item label="West Ham" value="whm" />
-        <Picker.Item label="Wolverhampton" value="wol" />
+        <Picker.Item label="Arsenal" value="Arsenal" />
+        <Picker.Item label="Aston Villa" value="Aston Villa" />
+        <Picker.Item label="Bournemouth" value="Bournemouth" />
+        <Picker.Item label="Brighton" value="Brighton" />
+        <Picker.Item label="Burnley" value="Burnley" />
+        <Picker.Item label="Chelsea" value="Chelsea" />
+        <Picker.Item label="Crystal Palace" value="Crystal Palace" />
+        <Picker.Item label="Everton" value="Everton" />
+        <Picker.Item label="Leicester City" value="Leicester City" />
+        <Picker.Item label="Liverpool" value="Liverpool" />
+        <Picker.Item label="Manchester City" value="Manchester City" />
+        <Picker.Item label="Manchester United" value="Manchester United" />
+        <Picker.Item label="Newcastle United" value="Newcastle United" />
+        <Picker.Item label="Norwich City" value="Norwich City" />
+        <Picker.Item label="Sheffield United" value="Sheffield United" />
+        <Picker.Item label="Southampton" value="Southampton" />
+        <Picker.Item label="Tottenham" value="Tottenham" />
+        <Picker.Item label="Watford" value="Watford" />
+        <Picker.Item label="West Ham" value="West Ham" />
+        <Picker.Item label="Wolverhampton" value="Wolverhampton" />
     </Picker>
     }
 }

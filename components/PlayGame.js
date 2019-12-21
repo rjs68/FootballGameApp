@@ -40,20 +40,20 @@ export class PlayGame extends React.Component {
     startTeam(){
         const num = Math.random();
         if(num>0.5){
-            this.setState({currentTeam: this.state.team1});
-            this.setState({message: "Kick off to " + this.state.team1});
+            this.setState({currentTeam: this.props.homeTeam});
+            this.setState({message: "Kick off to " + this.props.homeTeam});
         } else {
-            this.setState({currentTeam: this.state.team2});
-            this.setState({message: "Kick off to " + this.state.team2});
+            this.setState({currentTeam: this.props.awayTeam});
+            this.setState({message: "Kick off to " + this.props.awayTeam});
         }
     }
 
     //Method to change the current team
     changeTeam(){
-        if(this.state.currentTeam === this.state.team1){
-            this.setState({currentTeam: this.state.team2});
+        if(this.state.currentTeam === this.props.homeTeam){
+            this.setState({currentTeam: this.props.awayTeam});
         }else{
-            this.setState({currentTeam: this.state.team1});
+            this.setState({currentTeam: this.props.homeTeam});
         }
     }
 
@@ -74,7 +74,7 @@ export class PlayGame extends React.Component {
 
     //Adds a goals to a specific team
     addGoal(team){
-        if(team === this.state.team1){
+        if(team === this.this.props.homeTeam){
             this.setState({team1Score: this.state.team1Score + 1});
         }else {
             this.setState({team2Score: this.state.team2Score + 1});
@@ -83,7 +83,7 @@ export class PlayGame extends React.Component {
 
     //Adds a goal scorer
     addScorer(scorer){
-        if(this.state.currentTeam === this.state.team1){
+        if(this.state.currentTeam === this.props.homeTeam){
             if(this.state.team1Scorers === ""){
                 this.setState({team1Scorers: scorer + " (" + this.state.minute + "')"});
             }else {
@@ -108,10 +108,10 @@ export class PlayGame extends React.Component {
         return <View style={{backgroundColor: '#E6FFDE', flexDirection: 'column', height: Math.round(Dimensions.get('window').height)}}>
                     <View style={{height: '25%'}}>
                     <ScoreBoard 
-                        team1={this.state.team1}
+                        team1={this.props.homeTeam}
                         team1Score={this.state.team1Score}
                         team1Scorers={this.state.team1Scorers}
-                        team2={this.state.team2}
+                        team2={this.props.awayTeam}
                         team2Score={this.state.team2Score}
                         team2Scorers={this.state.team2Scorers}/>
                     </View>
