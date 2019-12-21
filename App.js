@@ -20,10 +20,15 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { PlayGame } from './components/PlayGame';
 import { HomeScreen } from './screens/HomeScreen';
 import { LoginScreen } from './screens/LoginScreen';
+import { PickTeamScreen } from './screens/PickTeamScreen';
 
 class HomeScreenClass extends React.Component {
   constructor(){
     super();
+    this.state = {
+      homeTeam: "",
+      awayTeam: ""
+    }
     this.handleHomePress = this.handleHomePress.bind(this);
   }
 
@@ -43,7 +48,7 @@ class LoginScreenClass extends React.Component {
   }
 
   handleLoginPress() {
-    this.props.navigation.navigate('Game')
+    this.props.navigation.navigate('PickTeam')
   }
 
   render() {
@@ -51,9 +56,24 @@ class LoginScreenClass extends React.Component {
   }
 }
 
+class PickTeamScreenClass extends React.Component {
+  constructor(){
+    super();
+    this.handleLoginPress = this.handleLoginPress.bind(this);
+  }
+
+  handleLoginPress() {
+    this.props.navigation.navigate('Game')
+  }
+
+  render() {
+    return <PickTeamScreen handlePress={this.handleLoginPress.bind(this)} />
+  }
+}
+
 class PlayGameClass extends React.Component {
   render() {
-    return <PlayGame />
+    return <PlayGame homeTeam={this.state.homeTeam} awayTeam={this.state.awayTeam}/>
   }
 }
 
@@ -62,6 +82,7 @@ const AppNavigator = createStackNavigator(
     Home: HomeScreenClass,
     Login: LoginScreenClass,
     Game: PlayGameClass,
+    PickTeam: PickTeamScreenClass
   },
   {
     headerMode: 'none',

@@ -4,14 +4,17 @@ import {
   ImageBackground,
   Text,
   Dimensions,
+  Picker,
   TouchableOpacity,
   TextInput
 } from 'react-native';
 
+import { TeamPicker } from '../components/TeamPicker';
+
 /**
  * The login screen of the app 
  */
-export class LoginScreen extends React.Component {
+export class PickTeamScreen extends React.Component {
     constructor(props){
       super(props);
     }
@@ -20,18 +23,14 @@ export class LoginScreen extends React.Component {
     return <View style={{height: Math.round(Dimensions.get('window').height)}}>
             <ImageBackground source={require('../images/stadium.jpg')} style={{width: '100%', height: '100%'}}>
               <Text style={textStyle}>
-                Login
+                Pick Teams
               </Text>
-              <TextInput style={[inputStyle, {top: 465}]}>
-                  Username
-              </TextInput>
-              <TextInput style={[inputStyle, {top: 470}]}>
-                  Password
-              </TextInput>
+              <TeamPicker top={460} initialValue="Home Team..."/>
+              <TeamPicker top={465} initialValue="Away Team..."/>
               <TouchableOpacity style={buttonStyle} onPress={this.props.handlePress}>
                 <View>
                   <Text style={buttonTextStyle}> 
-                    Login
+                    Play
                   </Text>
                 </View>
               </TouchableOpacity>
@@ -54,7 +53,7 @@ const inputStyle = {
   borderColor: 'white',
   borderWidth: 1,
   borderRadius: 10,
-  backgroundColor: '#dedede',
+  backgroundColor: 'grey',
   width: '70%',
   alignSelf: 'center',
   top: 460,
