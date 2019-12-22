@@ -6,7 +6,7 @@ export class TeamPicker extends React.Component {
         super(props);
         this.state = {}
       }
-
+      
     render() {
     return <Picker
         selectedValue={this.state.language}

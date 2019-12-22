@@ -8,9 +8,7 @@
 
 import React from 'react';
 import {
-  Button,
-  SafeAreaView,
-  ScrollView
+  View
 } from 'react-native';
 
 import 'react-native-gesture-handler';
@@ -21,6 +19,8 @@ import { PlayGame } from './components/PlayGame';
 import { HomeScreen } from './screens/HomeScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import { PickTeamScreen } from './screens/PickTeamScreen';
+
+const Realm = require('realm');
 
 let homeTeam = "";
 let awayTeam = "";
@@ -37,6 +37,26 @@ class HomeScreenClass extends React.Component {
   constructor(){
     super();
     this.handleHomePress = this.handleHomePress.bind(this);
+    this.state = { realm: null };
+  }
+
+  componentDidMount() {
+    Realm.open({
+      schema: [{name: 'Teams', properties: {name: 'string'}}]
+    }).then(realm => {
+      realm.write(() => {
+        realm.create('Teams', {name: 'Wales'});
+      });
+      this.setState({ realm });
+    });
+  }
+
+  componentWillUnmount() {
+    // Close the realm if there is one open.
+    const {realm} = this.state;
+    if (realm !== null && !realm.isClosed) {
+      realm.close();
+    }
   }
 
   handleHomePress() {
