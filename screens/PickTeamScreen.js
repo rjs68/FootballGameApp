@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import { TeamPicker } from '../components/TeamPicker';
+import { PickTeamDisplay } from '../components/PickTeamDisplay';
 
 /**
  * The login screen of the app 
@@ -23,9 +24,10 @@ export class PickTeamScreen extends React.Component {
     return <View style={{height: Math.round(Dimensions.get('window').height)}}>
             <ImageBackground source={require('../images/stadium.jpg')} style={{width: '100%', height: '100%'}}>
               <Text style={textStyle}>
-                Pick Teams
+                Pick Your Team
               </Text>
-              <TeamPicker top={460} setTeam={this.props.setHomeTeam}/>
+              <PickTeamDisplay />
+              <TeamPicker top='45%' setTeam={this.props.setHomeTeam}/>
               <TouchableOpacity style={buttonStyle} onPress={this.props.handlePress}>
                 <View>
                   <Text style={buttonTextStyle}> 
@@ -73,5 +75,5 @@ const buttonTextStyle = {
     backgroundColor: '#D7D9FF',
     width: '40%',
     alignSelf: 'center',
-    top: 500
+    top: '50%'
   }
