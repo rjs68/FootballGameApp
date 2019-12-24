@@ -1,13 +1,33 @@
 import React from 'react';
 import { Picker } from 'react-native';
+import realm from '../Realms/realm';
     
 export class TeamPicker extends React.Component {
     constructor(props){
         super(props);
         this.state = {}
+
+        realm.write(() => {
+            realm.deleteAll();
+            realm.create('TeamV2', {teamName: 'Wales', players: []});
+            realm.create('TeamV2', {teamName: 'Germany', players: []});
+            realm.create('TeamV2', {teamName: 'England', players: []});
+            realm.create('TeamV2', {teamName: 'France', players: []});
+            realm.create('TeamV2', {teamName: 'Brazil', players: []});
+            realm.create('TeamV2', {teamName: 'Argentina', players: []});
+            realm.create('TeamV2', {teamName: 'Spain', players: []});
+            realm.create('TeamV2', {teamName: 'Netherlands', players: []});
+            realm.create('TeamV2', {teamName: 'Portugal', players: []});
+            realm.create('TeamV2', {teamName: 'Belgium', players: []});
+        });
       }
       
     render() {
+    let teamObjects = realm.objects('TeamV2');
+    let teamNames = [];
+    for(let t of teamObjects) {
+        teamNames.push(t.teamName);
+    }
     return <Picker
         selectedValue={this.state.language}
         style={[inputStyle, {top: this.props.top}]}
@@ -18,27 +38,17 @@ export class TeamPicker extends React.Component {
             }
         }
         }>
-        <Picker.Item label={"Select " + this.props.initialValue} value="0" />
-        <Picker.Item label="Arsenal" value="Arsenal" />
-        <Picker.Item label="Aston Villa" value="Aston Villa" />
-        <Picker.Item label="Bournemouth" value="Bournemouth" />
-        <Picker.Item label="Brighton" value="Brighton" />
-        <Picker.Item label="Burnley" value="Burnley" />
-        <Picker.Item label="Chelsea" value="Chelsea" />
-        <Picker.Item label="Crystal Palace" value="Crystal Palace" />
-        <Picker.Item label="Everton" value="Everton" />
-        <Picker.Item label="Leicester City" value="Leicester City" />
-        <Picker.Item label="Liverpool" value="Liverpool" />
-        <Picker.Item label="Manchester City" value="Manchester City" />
-        <Picker.Item label="Manchester United" value="Manchester United" />
-        <Picker.Item label="Newcastle United" value="Newcastle United" />
-        <Picker.Item label="Norwich City" value="Norwich City" />
-        <Picker.Item label="Sheffield United" value="Sheffield United" />
-        <Picker.Item label="Southampton" value="Southampton" />
-        <Picker.Item label="Tottenham" value="Tottenham" />
-        <Picker.Item label="Watford" value="Watford" />
-        <Picker.Item label="West Ham" value="West Ham" />
-        <Picker.Item label="Wolverhampton" value="Wolverhampton" />
+        <Picker.Item label="Select your team..."value="0" />
+        <Picker.Item label={teamNames[0]} value={teamNames[0]} />
+        <Picker.Item label={teamNames[1]} value={teamNames[1]} />
+        <Picker.Item label={teamNames[2]} value={teamNames[2]} />
+        <Picker.Item label={teamNames[3]} value={teamNames[3]} />
+        <Picker.Item label={teamNames[4]} value={teamNames[4]} />
+        <Picker.Item label={teamNames[5]} value={teamNames[5]} />
+        <Picker.Item label={teamNames[6]} value={teamNames[6]} />
+        <Picker.Item label={teamNames[7]} value={teamNames[7]} />
+        <Picker.Item label={teamNames[8]} value={teamNames[8]} />
+        <Picker.Item label={teamNames[9]} value={teamNames[9]} />
     </Picker>
     }
 }
