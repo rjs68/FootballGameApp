@@ -69,10 +69,10 @@ const buttonTextStyle = {
   }
   
   const buttonStyle = {
-    borderColor: '#030BCC',
+    borderColor: 'black',
     borderWidth: 3,
     borderRadius: 10,
-    backgroundColor: '#D7D9FF',
+    backgroundColor: 'white',
     width: '40%',
     alignSelf: 'center',
     top: 500

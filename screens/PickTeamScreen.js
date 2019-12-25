@@ -18,6 +18,14 @@ import { PickTeamDisplay } from '../components/PickTeamDisplay';
 export class PickTeamScreen extends React.Component {
     constructor(props){
       super(props);
+      this.state = {
+        team: ''
+      }
+      this.nextTeam = this.nextTeam.bind(this);
+    }
+
+    nextTeam(nextState) {
+      this.setState(nextState);
     }
 
     render() {
@@ -26,8 +34,8 @@ export class PickTeamScreen extends React.Component {
               <Text style={textStyle}>
                 Pick Your Team
               </Text>
-              <PickTeamDisplay />
-              <TeamPicker top='45%' setTeam={this.props.setHomeTeam}/>
+              <PickTeamDisplay icon={this.state.teamIcon}/>
+              <TeamPicker top='45%' team={this.state.team} nextTeam={this.nextTeam.bind(this)}/>
               <TouchableOpacity style={buttonStyle} onPress={this.props.handlePress}>
                 <View>
                   <Text style={buttonTextStyle}> 
@@ -69,10 +77,10 @@ const buttonTextStyle = {
   }
   
   const buttonStyle = {
-    borderColor: '#030BCC',
+    borderColor: 'black',
     borderWidth: 3,
     borderRadius: 10,
-    backgroundColor: '#D7D9FF',
+    backgroundColor: 'white',
     width: '40%',
     alignSelf: 'center',
     top: '50%'

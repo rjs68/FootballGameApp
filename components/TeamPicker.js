@@ -1,6 +1,9 @@
 import React from 'react';
 import { Picker } from 'react-native';
 import realm from '../Realms/realm';
+
+let teamObjects;
+let teamNames = [];
     
 export class TeamPicker extends React.Component {
     constructor(props){
@@ -9,25 +12,26 @@ export class TeamPicker extends React.Component {
 
         realm.write(() => {
             realm.deleteAll();
-            realm.create('TeamV2', {teamName: 'Wales', players: []});
-            realm.create('TeamV2', {teamName: 'Germany', players: []});
-            realm.create('TeamV2', {teamName: 'England', players: []});
-            realm.create('TeamV2', {teamName: 'France', players: []});
-            realm.create('TeamV2', {teamName: 'Brazil', players: []});
-            realm.create('TeamV2', {teamName: 'Argentina', players: []});
-            realm.create('TeamV2', {teamName: 'Spain', players: []});
-            realm.create('TeamV2', {teamName: 'Netherlands', players: []});
-            realm.create('TeamV2', {teamName: 'Portugal', players: []});
-            realm.create('TeamV2', {teamName: 'Belgium', players: []});
+            realm.create('TeamV3', {teamName: 'Wales', teamIconPath: require('../images/Flags/wales.jpg'), players: []});
+            realm.create('TeamV3', {teamName: 'Germany', teamIconPath: require('../images/Flags/germany.jpg'), players: []});
+            realm.create('TeamV3', {teamName: 'England', teamIconPath: require('../images/Flags/england.jpg'), players: []});
+            realm.create('TeamV3', {teamName: 'France', teamIconPath: require('../images/Flags/france.jpg'), players: []});
+            realm.create('TeamV3', {teamName: 'Brazil', teamIconPath: require('../images/Flags/brazil.jpg'), players: []});
+            realm.create('TeamV3', {teamName: 'Argentina', teamIconPath: require('../images/Flags/argentina.jpg'), players: []});
+            realm.create('TeamV3', {teamName: 'Spain', teamIconPath: require('../images/Flags/spain.jpg'), players: []});
+            realm.create('TeamV3', {teamName: 'Netherlands', teamIconPath: require('../images/Flags/netherlands.jpg'), players: []});
+            realm.create('TeamV3', {teamName: 'Portugal', teamIconPath: require('../images/Flags/portugal.jpg'), players: []});
+            realm.create('TeamV3', {teamName: 'Belgium', teamIconPath: require('../images/Flags/belgium.jpg'), players: []});
         });
+
+        teamObjects = realm.objects('TeamV3');
+        for(let t of teamObjects) {
+            teamNames.push(t.teamName);
+        }
+        this.props.nextTeam({team: teamNames[5]});
       }
       
     render() {
-    let teamObjects = realm.objects('TeamV2');
-    let teamNames = [];
-    for(let t of teamObjects) {
-        teamNames.push(t.teamName);
-    }
     return <Picker
         selectedValue={this.state.language}
         style={[inputStyle, {top: this.props.top}]}
