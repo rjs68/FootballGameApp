@@ -39,7 +39,7 @@ export class TeamPicker extends React.Component {
             realm.create('TeamV3', {teamName: 'Nigeria', players: []});
             realm.create('TeamV3', {teamName: 'Northern Ireland', players: []});
             realm.create('TeamV3', {teamName: 'Portugal', players: []});
-            realm.create('TeamV3', {teamName: 'Republic of Ireland', players: []});
+            realm.create('TeamV3', {teamName: 'Ireland', players: []});
             realm.create('TeamV3', {teamName: 'Russia', players: []});
             realm.create('TeamV3', {teamName: 'Scotland', players: []});
             realm.create('TeamV3', {teamName: 'South Korea', players: []});
@@ -71,7 +71,8 @@ export class TeamPicker extends React.Component {
 }
     
 const inputStyle = {
-    top: '45%'
+    top: '45%',
+    alignSelf: 'center'
   }
 
 const textStyle = {

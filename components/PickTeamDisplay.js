@@ -35,6 +35,9 @@ export class PickTeamDisplay extends React.Component {
             case 'Canada': return <View style={viewStyle}>
                                         <Image source={require('../images/Flags/canada.jpg')} style={{width: '100%', height: '100%'}} />
                                     </View>;
+            case 'China': return <View style={viewStyle}>
+                                        <Image source={require('../images/Flags/china.jpg')} style={{width: '100%', height: '100%'}} />
+                                    </View>;
             case 'Chile': return <View style={viewStyle}>
                                         <Image source={require('../images/Flags/chile.jpg')} style={{width: '100%', height: '100%'}} />
                                     </View>;
@@ -86,7 +89,7 @@ export class PickTeamDisplay extends React.Component {
             case 'Portugal': return <View style={viewStyle}>
                                         <Image source={require('../images/Flags/portugal.jpg')} style={{width: '100%', height: '100%'}} />
                                     </View>;
-            case 'Republic of Ireland': return <View style={viewStyle}>
+            case 'Ireland': return <View style={viewStyle}>
                                         <Image source={require('../images/Flags/republicireland.jpg')} style={{width: '100%', height: '100%'}} />
                                     </View>;
             case 'Russia': return <View style={viewStyle}>

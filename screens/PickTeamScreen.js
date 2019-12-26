@@ -31,7 +31,12 @@ export class PickTeamScreen extends React.Component {
     }
 
     nextTeam(nextState) {
+      if(this.state.teamNumber >= 32){
+        this.setState({teamNumber: 0});
+      } else {
+        
       this.setState({teamNumber: this.state.teamNumber + 1});
+      }
       this.setState(nextState);
     }
 
