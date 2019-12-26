@@ -1,5 +1,5 @@
 import React from 'react';
-import { Picker } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import realm from '../Realms/realm';
 
 let teamObjects;
@@ -8,62 +8,77 @@ let teamNames = [];
 export class TeamPicker extends React.Component {
     constructor(props){
         super(props);
-        this.state = {}
+        this.state = {
+            teamNumber: 0
+        }
 
         realm.write(() => {
             realm.deleteAll();
-            realm.create('TeamV3', {teamName: 'Wales', teamIconPath: require('../images/Flags/wales.jpg'), players: []});
-            realm.create('TeamV3', {teamName: 'Germany', teamIconPath: require('../images/Flags/germany.jpg'), players: []});
-            realm.create('TeamV3', {teamName: 'England', teamIconPath: require('../images/Flags/england.jpg'), players: []});
-            realm.create('TeamV3', {teamName: 'France', teamIconPath: require('../images/Flags/france.jpg'), players: []});
-            realm.create('TeamV3', {teamName: 'Brazil', teamIconPath: require('../images/Flags/brazil.jpg'), players: []});
-            realm.create('TeamV3', {teamName: 'Argentina', teamIconPath: require('../images/Flags/argentina.jpg'), players: []});
-            realm.create('TeamV3', {teamName: 'Spain', teamIconPath: require('../images/Flags/spain.jpg'), players: []});
-            realm.create('TeamV3', {teamName: 'Netherlands', teamIconPath: require('../images/Flags/netherlands.jpg'), players: []});
-            realm.create('TeamV3', {teamName: 'Portugal', teamIconPath: require('../images/Flags/portugal.jpg'), players: []});
-            realm.create('TeamV3', {teamName: 'Belgium', teamIconPath: require('../images/Flags/belgium.jpg'), players: []});
+            realm.create('TeamV3', {teamName: 'Algeria', players: []});
+            realm.create('TeamV3', {teamName: 'Argentina', players: []});
+            realm.create('TeamV3', {teamName: 'Australia', players: []});
+            realm.create('TeamV3', {teamName: 'Belgium', players: []});
+            realm.create('TeamV3', {teamName: 'Brazil', players: []});
+            realm.create('TeamV3', {teamName: 'Cameroon', players: []});
+            realm.create('TeamV3', {teamName: 'Canada', players: []});
+            realm.create('TeamV3', {teamName: 'Chile', players: []});
+            realm.create('TeamV3', {teamName: 'China', players: []});
+            realm.create('TeamV3', {teamName: 'Colombia', players: []});
+            realm.create('TeamV3', {teamName: 'Cote D\'Ivoire', players: []});
+            realm.create('TeamV3', {teamName: 'Ecuador', players: []});
+            realm.create('TeamV3', {teamName: 'England', players: []});
+            realm.create('TeamV3', {teamName: 'Finland', players: []});
+            realm.create('TeamV3', {teamName: 'France', players: []});
+            realm.create('TeamV3', {teamName: 'Germany', players: []});
+            realm.create('TeamV3', {teamName: 'Italy', players: []});
+            realm.create('TeamV3', {teamName: 'Jamaica', players: []});
+            realm.create('TeamV3', {teamName: 'Japan', players: []});
+            realm.create('TeamV3', {teamName: 'Mexico', players: []});
+            realm.create('TeamV3', {teamName: 'Netherlands', players: []});
+            realm.create('TeamV3', {teamName: 'New Zealand', players: []});
+            realm.create('TeamV3', {teamName: 'Nigeria', players: []});
+            realm.create('TeamV3', {teamName: 'Northern Ireland', players: []});
+            realm.create('TeamV3', {teamName: 'Portugal', players: []});
+            realm.create('TeamV3', {teamName: 'Republic of Ireland', players: []});
+            realm.create('TeamV3', {teamName: 'Russia', players: []});
+            realm.create('TeamV3', {teamName: 'Scotland', players: []});
+            realm.create('TeamV3', {teamName: 'South Korea', players: []});
+            realm.create('TeamV3', {teamName: 'Spain', players: []});
+            realm.create('TeamV3', {teamName: 'Uruguay', players: []});
+            realm.create('TeamV3', {teamName: 'USA', players: []});
+            realm.create('TeamV3', {teamName: 'Wales', players: []});
         });
 
         teamObjects = realm.objects('TeamV3');
         for(let t of teamObjects) {
             teamNames.push(t.teamName);
         }
-        this.props.nextTeam({team: teamNames[5]});
+        this.props.firstTeam({team: teamNames[this.props.teamNumber]});
+        this.addTeam = this.addTeam.bind(this);
       }
+    
+    addTeam(){
+        this.props.nextTeam({team: teamNames[this.props.teamNumber]})
+    }
       
     render() {
-    return <Picker
-        selectedValue={this.state.language}
-        style={[inputStyle, {top: this.props.top}]}
-        onValueChange={(itemValue) => {
-            if(itemValue != 0){
-                this.setState({language: itemValue});
-                this.props.setTeam(itemValue);
-            }
-        }
-        }>
-        <Picker.Item label="Select your team..."value="0" />
-        <Picker.Item label={teamNames[0]} value={teamNames[0]} />
-        <Picker.Item label={teamNames[1]} value={teamNames[1]} />
-        <Picker.Item label={teamNames[2]} value={teamNames[2]} />
-        <Picker.Item label={teamNames[3]} value={teamNames[3]} />
-        <Picker.Item label={teamNames[4]} value={teamNames[4]} />
-        <Picker.Item label={teamNames[5]} value={teamNames[5]} />
-        <Picker.Item label={teamNames[6]} value={teamNames[6]} />
-        <Picker.Item label={teamNames[7]} value={teamNames[7]} />
-        <Picker.Item label={teamNames[8]} value={teamNames[8]} />
-        <Picker.Item label={teamNames[9]} value={teamNames[9]} />
-    </Picker>
+    return <TouchableOpacity onPress={this.addTeam} style={inputStyle}>
+            <View >
+                <Text style={textStyle}>{this.props.team}</Text>
+            </View>
+        </TouchableOpacity>
     }
 }
     
 const inputStyle = {
-    borderColor: 'black',
-    borderWidth: 10,
-    borderRadius: 10,
-    backgroundColor: '#dedede',
-    width: '70%',
-    alignSelf: 'center',
-    top: 460,
-    fontSize: 20
+    top: '45%'
   }
+
+const textStyle = {
+    fontFamily: 'sans-serif',
+    fontSize: 50,
+    alignSelf: 'center',
+    color: 'white',
+    textShadowColor: 'red',
+    textShadowRadius: 100
+}
