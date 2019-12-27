@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import realm from '../Realms/realm';
+import GestureRecognizer from 'react-native-swipe-gestures';
 
 let teamObjects;
 let teamNames = [];
@@ -55,18 +56,23 @@ export class TeamPicker extends React.Component {
         }
         this.props.firstTeam({team: teamNames[this.props.teamNumber]});
         this.addTeam = this.addTeam.bind(this);
+        this.backTeam = this.backTeam.bind(this);
       }
     
     addTeam(){
         this.props.nextTeam({team: teamNames[this.props.teamNumber]})
     }
+
+    backTeam(){
+        this.props.previousTeam({team: teamNames[this.props.teamNumber]})
+    }
       
     render() {
-    return <TouchableOpacity onPress={this.addTeam} style={inputStyle}>
-            <View >
-                <Text style={textStyle}>{this.props.team}</Text>
-            </View>
-        </TouchableOpacity>
+    return <GestureRecognizer onSwipeRight={this.addTeam} onSwipeLeft={this.backTeam} style={inputStyle}>
+                    <View >
+                        <Text style={textStyle}>{this.props.team}</Text>
+                    </View>
+            </GestureRecognizer>
     }
 }
     

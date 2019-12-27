@@ -24,6 +24,7 @@ export class PickTeamScreen extends React.Component {
       }
       this.firstTeam = this.firstTeam.bind(this);
       this.nextTeam = this.nextTeam.bind(this);
+      this.previousTeam = this.previousTeam.bind(this);
     }
 
     firstTeam(state){
@@ -34,8 +35,16 @@ export class PickTeamScreen extends React.Component {
       if(this.state.teamNumber >= 32){
         this.setState({teamNumber: 0});
       } else {
-        
-      this.setState({teamNumber: this.state.teamNumber + 1});
+        this.setState({teamNumber: this.state.teamNumber + 1});
+      }
+      this.setState(nextState);
+    }
+
+    previousTeam(nextState) {
+      if(this.state.teamNumber <= 0){
+        this.setState({teamNumber: 32});
+      } else {
+        this.setState({teamNumber: this.state.teamNumber - 1});
       }
       this.setState(nextState);
     }
@@ -47,7 +56,11 @@ export class PickTeamScreen extends React.Component {
                 Pick Your Team
               </Text>
               <PickTeamDisplay team={this.state.team} icon={this.state.teamIcon}/>
-              <TeamPicker teamNumber={this.state.teamNumber} team={this.state.team} firstTeam={this.firstTeam.bind(this)} nextTeam={this.nextTeam.bind(this)} handlePress={this.state.nextTeam}/>
+              <TeamPicker teamNumber={this.state.teamNumber} 
+                          team={this.state.team} 
+                          firstTeam={this.firstTeam.bind(this)} 
+                          nextTeam={this.nextTeam.bind(this)} 
+                          previousTeam={this.previousTeam.bind(this)}/>
               <TouchableOpacity style={buttonStyle} onPress={this.props.handlePress}>
                 <View>
                   <Text style={buttonTextStyle}> 
