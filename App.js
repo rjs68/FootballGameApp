@@ -19,6 +19,7 @@ import { PlayGame } from './components/PlayGame';
 import { HomeScreen } from './screens/HomeScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import { PickTeamScreen } from './screens/PickTeamScreen';
+import { GameHomeScreen } from './screens/GameHomeScreen';
 
 let homeTeam = "";
 let awayTeam = "";
@@ -69,11 +70,21 @@ class PickTeamScreenClass extends React.Component {
   }
 
   handleLoginPress() {
-    this.props.navigation.navigate('Game')
+    this.props.navigation.navigate('GameHome')
   }
 
   render() {
     return <PickTeamScreen handlePress={this.handleLoginPress.bind(this)} setHomeTeam={setHomeTeam} setAwayTeam={setAwayTeam} />
+  }
+}
+
+class GameHomeScreenClass extends React.Component {
+  constructor(){
+    super();
+  }
+
+  render() {
+    return <GameHomeScreen/>
   }
 }
 
@@ -87,7 +98,7 @@ const AppNavigator = createStackNavigator(
   {
     Home: HomeScreenClass,
     Login: LoginScreenClass,
-    Game: PlayGameClass,
+    GameHome: GameHomeScreenClass,
     PickTeam: PickTeamScreenClass
   },
   {
