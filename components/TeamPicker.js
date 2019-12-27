@@ -69,9 +69,11 @@ export class TeamPicker extends React.Component {
       
     render() {
     return <GestureRecognizer onSwipeRight={this.addTeam} onSwipeLeft={this.backTeam} style={inputStyle}>
+                <TouchableOpacity>
                     <View >
                         <Text style={textStyle}>{this.props.team}</Text>
                     </View>
+                </TouchableOpacity>
             </GestureRecognizer>
     }
 }
