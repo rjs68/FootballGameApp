@@ -55,16 +55,41 @@ export class TeamPicker extends React.Component {
             teamNames.push(t.teamName);
         }
         this.props.firstTeam({team: teamNames[this.props.teamNumber]});
+        this.props.setTeam(teamNames[this.props.teamNumber])
         this.addTeam = this.addTeam.bind(this);
         this.backTeam = this.backTeam.bind(this);
       }
     
     addTeam(){
-        this.props.nextTeam({team: teamNames[this.props.teamNumber]})
+        if(this.state.teamNumber >= 32){
+            this.setState({teamNumber: 0})
+        }else {
+            this.setState({teamNumber: this.state.teamNumber + 1})
+        }
+        
+        this.props.nextTeam({
+            teamNumber: this.state.teamNumber,
+        });
+        this.props.nextTeam({
+            team: teamNames[this.state.teamNumber]
+        })
+        this.props.setTeam(teamNames[this.state.teamNumber])
     }
 
     backTeam(){
-        this.props.previousTeam({team: teamNames[this.props.teamNumber]})
+        if(this.state.teamNumber <= 0){
+            this.setState({teamNumber: 32})
+        }else {
+            this.setState({teamNumber: this.state.teamNumber - 1})
+        }
+        
+        this.props.previousTeam({
+            teamNumber: this.state.teamNumber,
+        });
+        this.props.previousTeam({
+            team: teamNames[this.state.teamNumber]
+        })
+        this.props.setTeam(teamNames[this.state.teamNumber])
     }
       
     render() {

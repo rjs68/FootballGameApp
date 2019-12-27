@@ -21,15 +21,10 @@ import { LoginScreen } from './screens/LoginScreen';
 import { PickTeamScreen } from './screens/PickTeamScreen';
 import { GameHomeScreen } from './screens/GameHomeScreen';
 
-let homeTeam = "";
-let awayTeam = "";
+let team = 'Germany';
 
-const setHomeTeam = team => {
-  homeTeam = team;
-}
-
-const setAwayTeam = team => {
-  awayTeam = team;
+let setTeam = (newTeam) => {
+  team = newTeam
 }
 
 class HomeScreenClass extends React.Component {
@@ -74,7 +69,7 @@ class PickTeamScreenClass extends React.Component {
   }
 
   render() {
-    return <PickTeamScreen handlePress={this.handleLoginPress.bind(this)} setHomeTeam={setHomeTeam} setAwayTeam={setAwayTeam} />
+    return <PickTeamScreen handlePress={this.handleLoginPress.bind(this)} setTeam={setTeam.bind(this)}/>
   }
 }
 
@@ -84,7 +79,7 @@ class GameHomeScreenClass extends React.Component {
   }
 
   render() {
-    return <GameHomeScreen/>
+    return <GameHomeScreen team={team}/>
   }
 }
 

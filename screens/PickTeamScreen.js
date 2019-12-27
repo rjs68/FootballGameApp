@@ -47,6 +47,7 @@ export class PickTeamScreen extends React.Component {
         this.setState({teamNumber: this.state.teamNumber - 1});
       }
       this.setState(nextState);
+      this.props.setTeam(this.state.team);
     }
 
     render() {
@@ -60,7 +61,8 @@ export class PickTeamScreen extends React.Component {
                           team={this.state.team} 
                           firstTeam={this.firstTeam.bind(this)} 
                           nextTeam={this.nextTeam.bind(this)} 
-                          previousTeam={this.previousTeam.bind(this)}/>
+                          previousTeam={this.previousTeam.bind(this)}
+                          setTeam={this.props.setTeam}/>
               <TouchableOpacity style={buttonStyle} onPress={this.props.handlePress}>
                 <View>
                   <Text style={buttonTextStyle}> 
